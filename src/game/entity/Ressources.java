@@ -14,7 +14,7 @@ public class Ressources {
     private int insects;
     private int animals;
 
-    private Ressources() {
+    public Ressources() {
         energy = 0;
         pressure = 0;
         heat = 0;
@@ -102,6 +102,86 @@ public class Ressources {
                 animals = 0;
                 break;
         }
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
+
+    public int getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(int pressure) {
+        this.pressure = pressure;
+    }
+
+    public int getHeat() {
+        return heat;
+    }
+
+    public void setHeat(int heat) {
+        this.heat = heat;
+    }
+
+    public int getOxygen() {
+        return oxygen;
+    }
+
+    public void setOxygen(int oxygen) {
+        this.oxygen = oxygen;
+    }
+
+    public int getStableMetal() {
+        return stableMetal;
+    }
+
+    public void setStableMetal(int stableMetal) {
+        this.stableMetal = stableMetal;
+    }
+
+    public int getNonMetal() {
+        return nonMetal;
+    }
+
+    public void setNonMetal(int nonMetal) {
+        this.nonMetal = nonMetal;
+    }
+
+    public int getRadioactiveMetal() {
+        return radioactiveMetal;
+    }
+
+    public void setRadioactiveMetal(int radioactiveMetal) {
+        this.radioactiveMetal = radioactiveMetal;
+    }
+
+    public int getPlants() {
+        return plants;
+    }
+
+    public void setPlants(int plants) {
+        this.plants = plants;
+    }
+
+    public int getInsects() {
+        return insects;
+    }
+
+    public void setInsects(int insects) {
+        this.insects = insects;
+    }
+
+    public int getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(int animals) {
+        this.animals = animals;
     }
 
     @Override
