@@ -7,16 +7,15 @@ import game.utils.ColoredConsoleText;
 import java.util.Objects;
 
 /**
- * Class SolarPanel extends Machine
+ * Class SeaweedGenerator extends Machine
  */
-public class SolarPanel extends Machine {
-
-    private final Character letter = 'C';
-    private final String name = "Panneau solaire";
+public class SeaweedGenerator extends Machine {
+    private final Character letter = 'H';
+    private final String name = "Générateur d'algues";
     private static int number = 0;
 
-    public SolarPanel() {
-        super(0, 2, 3, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    public SeaweedGenerator() {
+        super(13, 30, 10, 0, 0, 127, 0, 0, 8, 0, 0, 0, 0, 0);
         number += 1;
     }
 
@@ -35,7 +34,8 @@ public class SolarPanel extends Machine {
     @Override
     public boolean isBuildable(Resources planet) {
         return planet.getStableMetal() >= super.getStableMetalCost()
-                && planet.getNonMetal() >= super.getNonMetalCost();
+                && planet.getNonMetal() >= super.getNonMetalCost()
+                && planet.getHeat() >= 500;
     }
 
     @Override
@@ -43,13 +43,13 @@ public class SolarPanel extends Machine {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        SolarPanel that = (SolarPanel) o;
-        return Objects.equals(name, that.name);
+        SeaweedGenerator that = (SeaweedGenerator) o;
+        return Objects.equals(letter, that.letter) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), name);
+        return Objects.hash(super.hashCode(), letter, name);
     }
 
     @Override
@@ -57,6 +57,9 @@ public class SolarPanel extends Machine {
         return "name='" + name + "'\n" +
                 "Coûts de construction : Métaux Stable -> " + ColoredConsoleText.RED + getStableMetalCost() + ColoredConsoleText.RESET +
                 ", Non-métaux -> " + ColoredConsoleText.RED + getNonMetalCost() + ColoredConsoleText.RESET + "\n" +
-                "Production d'énerige : " + ColoredConsoleText.GREEN + getProductEnergy() + ColoredConsoleText.RESET + "\n";
+                "Consommation d'énerige : -" + ColoredConsoleText.RED + getProductEnergy() + ColoredConsoleText.RESET + "\n" +
+                "Production de plantes : +" + ColoredConsoleText.GREEN + getProductPlants() + ColoredConsoleText.RESET + "\n" +
+                "Production d'Oxygène : +" + ColoredConsoleText.GREEN + getProductOxygen() + ColoredConsoleText.RESET + "\n" +
+                "Condition de Construction : " + ColoredConsoleText.BLUE + "Chaleur >= 500";
     }
 }

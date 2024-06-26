@@ -1,11 +1,13 @@
 import game.Game;
+import game.entity.machines.FissionReactor;
+import game.entity.machines.SolarPanel;
 
 public class Main {
     public static void main(String[] args) {
         Game game = Game.getInstance();
+        SolarPanel solarPanel = new SolarPanel();
         game.choiceLevel();
-        int totalBiomass = 0;
-        while (totalBiomass < 200000) {
+        while (game.getPlanet().getTotalBiomass() < 200000) {
 
         }
     }

@@ -1,9 +1,10 @@
 package game.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
+/**
+ * Class Machine
+ */
 public abstract class Machine {
 
     private int energyCost;
@@ -21,6 +22,23 @@ public abstract class Machine {
     private int productNonMetal;
     private int productRadioactiveMetal;
 
+    /**
+     * Constructor
+     * @param energyCost is the number of energy consumed per turn
+     * @param stableMetalCost is the number of stableMetal needed to build the machine
+     * @param nonMetalCost is the number of nonMetal needed to build the machine
+     * @param radioactiveMetalCost is the number of radioactiveMetal needed to build the machine
+     * @param productEnergy is the number of energy produced
+     * @param productOxygen is the number of oxygen produced
+     * @param productPressure is the number of pressure produced
+     * @param productHeat is the number of heat produced
+     * @param productPlants is the number of plants produced
+     * @param productInsects is the number of insects produced
+     * @param productAnimals is the number of animals produced
+     * @param productStableMetal is the number of stableMetal produced
+     * @param productNonMetal is the number of nonMetal produced
+     * @param productRadioactiveMetal is the number of radioactiveMetal produced
+     */
     public Machine(int energyCost, int stableMetalCost, int nonMetalCost, int radioactiveMetalCost,
                    int productEnergy, int productOxygen, int productPressure, int productHeat,
                    int productPlants, int productInsects, int productAnimals, int productStableMetal,
@@ -153,11 +171,11 @@ public abstract class Machine {
         this.productRadioactiveMetal = productRadioactiveMetal;
     }
 
-    public void simulate(Ressources planet) {
-
-    }
-
-    public void produce(Ressources planet) {
+    /**
+     * Update the ressources of the planet
+     * @param planet is the game instance of Ressources
+     */
+    public void simulate(Resources planet) {
         planet.setEnergy(planet.getEnergy() + energyCost);
         planet.setOxygen(planet.getOxygen() + productOxygen);
         planet.setPressure(planet.getPressure() + productPressure);
@@ -168,8 +186,15 @@ public abstract class Machine {
         planet.setStableMetal(planet.getStableMetal() + productStableMetal);
         planet.setNonMetal(planet.getNonMetal() + productNonMetal);
         planet.setRadioactiveMetal(planet.getRadioactiveMetal() + productRadioactiveMetal);
+        planet.setTotalBiomass(planet.getTotalBiomass() + productPlants + productInsects + productAnimals);
     }
-    public abstract boolean isBuildable(Ressources planet);
+
+    /**
+     * Abstract method to check if the machine is buildable
+     * @param planet is the game instance of Resources
+     * @return true if the machine is buildable
+     */
+    public abstract boolean isBuildable(Resources planet);
 
     @Override
     public boolean equals(Object o) {

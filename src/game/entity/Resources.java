@@ -2,7 +2,10 @@ package game.entity;
 
 import game.utils.ColoredConsoleText;
 
-public class Ressources {
+/**
+ * Class Resources
+ */
+public class Resources {
     private int energy;
     private int pressure;
     private int heat;
@@ -13,8 +16,9 @@ public class Ressources {
     private int plants;
     private int insects;
     private int animals;
+    private int totalBiomass = 0;
 
-    public Ressources() {
+    public Resources() {
         energy = 0;
         pressure = 0;
         heat = 0;
@@ -27,7 +31,11 @@ public class Ressources {
         animals = 0;
     }
 
-    public Ressources(int level) {
+    /**
+     * Constructor
+     * @param level decide the starting resources
+     */
+    public Resources(int level) {
         switch (level) {
             case 1:
                 energy = 0;
@@ -182,6 +190,14 @@ public class Ressources {
 
     public void setAnimals(int animals) {
         this.animals = animals;
+    }
+
+    public int getTotalBiomass() {
+        return totalBiomass;
+    }
+
+    public void setTotalBiomass(int totalBiomass) {
+        this.totalBiomass = totalBiomass;
     }
 
     @Override
