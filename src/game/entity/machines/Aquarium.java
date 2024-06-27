@@ -7,15 +7,19 @@ import game.utils.ColoredConsoleText;
 import java.util.Objects;
 
 /**
- * Class SeaweedGenerator extends Machine
+ * Class Aquarium extends Machine
  */
-public class SeaweedGenerator extends Machine {
-    private final Character letter = 'H';
-    private final String name = "Générateur d'algues";
+public class Aquarium extends Machine {
+
+    private final Character letter = 'P';
+    private final String name = "Aquarium";
     private static int number = 0;
 
-    public SeaweedGenerator() {
-        super(13, 30, 10, 0, 0, 127, 0, 0, 8, 0, 0, 0, 0, 0);
+    /**
+     * Constructor
+     */
+    public Aquarium() {
+        super(75, 30, 60, 20, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0);
         number += 1;
     }
 
@@ -35,6 +39,7 @@ public class SeaweedGenerator extends Machine {
     public boolean isBuildable(Resources planet) {
         return planet.getStableMetal() >= super.getStableMetalCost()
                 && planet.getNonMetal() >= super.getNonMetalCost()
+                && planet.getRadioactiveMetal() >= super.getRadioactiveMetalCost()
                 && planet.getHeat() >= 500;
     }
 
@@ -43,8 +48,8 @@ public class SeaweedGenerator extends Machine {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        SeaweedGenerator that = (SeaweedGenerator) o;
-        return Objects.equals(letter, that.letter) && Objects.equals(name, that.name);
+        Aquarium aquarium = (Aquarium) o;
+        return Objects.equals(letter, aquarium.letter) && Objects.equals(name, aquarium.name);
     }
 
     @Override
@@ -56,10 +61,10 @@ public class SeaweedGenerator extends Machine {
     public String toString() {
         return "name='" + name + "'\n" +
                 "Coûts de construction : Métaux Stable -> " + ColoredConsoleText.RED + getStableMetalCost() + ColoredConsoleText.RESET +
-                ", Non-métaux -> " + ColoredConsoleText.RED + getNonMetalCost() + ColoredConsoleText.RESET + "\n" +
-                "Consommation d'énerige : -" + ColoredConsoleText.RED + getProductEnergy() + ColoredConsoleText.RESET + "\n" +
-                "Production d'Oxygène : +" + ColoredConsoleText.GREEN + getProductOxygen() + ColoredConsoleText.RESET + "\n" +
-                "Production de plantes : +" + ColoredConsoleText.GREEN + getProductPlants() + ColoredConsoleText.RESET + "\n" +
-                "Condition de Construction : " + ColoredConsoleText.BLUE + "Chaleur >= 500";
+                ", Non-métaux -> " + ColoredConsoleText.RED + getNonMetalCost() + ColoredConsoleText.RESET +
+                ", Métaux Radioactif -> " + ColoredConsoleText.RED + getRadioactiveMetalCost() + ColoredConsoleText.RESET + "\n" +
+                "Consommation d'énergie : -" + ColoredConsoleText.RED + getProductEnergy() + ColoredConsoleText.RESET + "\n" +
+                "Production de ressources : Animals : +" + ColoredConsoleText.GREEN + getProductAnimals() + ColoredConsoleText.RESET + "\n" +
+                "Condition de construction : " + ColoredConsoleText.BLUE + "Chaleur >= 500" + ColoredConsoleText.RESET + "\n";
     }
 }

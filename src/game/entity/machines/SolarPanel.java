@@ -57,6 +57,6 @@ public class SolarPanel extends Machine {
         return "name='" + name + "'\n" +
                 "Coûts de construction : Métaux Stable -> " + ColoredConsoleText.RED + getStableMetalCost() + ColoredConsoleText.RESET +
                 ", Non-métaux -> " + ColoredConsoleText.RED + getNonMetalCost() + ColoredConsoleText.RESET + "\n" +
-                "Production d'énerige : " + ColoredConsoleText.GREEN + getProductEnergy() + ColoredConsoleText.RESET + "\n";
+                "Production d'énergie : " + ColoredConsoleText.GREEN + getProductEnergy() + ColoredConsoleText.RESET + "\n";
     }
 }

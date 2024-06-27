@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class GrassGenerator extends Machine {
 
-    private final Character letter = 'B';
+    private final Character letter = 'I';
     private final String name = "Grass generator";
     private static int number = 0;
 
@@ -59,7 +59,8 @@ public class GrassGenerator extends Machine {
                 "Coûts de construction : Métaux Stable -> " + ColoredConsoleText.RED + getStableMetalCost() + ColoredConsoleText.RESET +
                 ", Non-métaux -> " + ColoredConsoleText.RED + getNonMetalCost() + ColoredConsoleText.RESET + "\n" +
                 "Consommation d'énerige : -" + ColoredConsoleText.RED + getProductEnergy() + ColoredConsoleText.RESET + "\n" +
-                "Production de plantes : +" + ColoredConsoleText.GREEN + getProductPlants() + ColoredConsoleText.RESET + "\n" +
+                "Production de ressources : Oxygène : +" + ColoredConsoleText.GREEN + getProductOxygen() + ColoredConsoleText.RESET +
+                ", Plantes +" + ColoredConsoleText.GREEN + getProductPlants() + ColoredConsoleText.RESET + "\n" +
                 "Condition de construction : " + ColoredConsoleText.BLUE + "Pression >= 10000, Temperature > 400" + ColoredConsoleText.RESET + "\n";
     }
 }
